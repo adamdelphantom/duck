@@ -15,6 +15,9 @@ const FLY_COMMAND: &str = "fly";
 const LAY_MESSAGE: &str = "🥚";
 const LAY_COMMAND: &str = "lay";
 
+const SLEEP_MESSAGE: &str = "😴";
+const SLEEP_COMMAND: &str = "sleep";
+
 
 struct Handler;
 
@@ -31,6 +34,10 @@ impl EventHandler for Handler {
             }
         } else if msg.content == LAY_COMMAND {
             if let Err(e) = msg.channel_id.say(&ctx.http, LAY_MESSAGE).await {
+                println!("Error sending message: {:?}", e);
+            }
+        } else if msg.content == SLEEP_COMMAND {
+            if let Err(e) = msg.channel_id.say(&ctx.http, SLEEP_MESSAGE).await {
                 println!("Error sending message: {:?}", e);
             }
         }
