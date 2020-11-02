@@ -50,6 +50,9 @@ impl EventHandler for Handler {
 
 #[tokio::main]
 async fn main() {
+
+    let port = env::var("PORT");
+
     let token = env::var("DISCORD_TOKEN")
         .expect("Expected a token in the environment");
 
